@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    triggers {
+        pollSCM('H/1 * * * *')
+    }
+
     environment {
         IMAGE_NAME = "membership-api"
         IMAGE_TAG = "1.0.${BUILD_NUMBER}"

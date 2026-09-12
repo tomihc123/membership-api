@@ -4,11 +4,6 @@ metadata:
   name: mariadb-secret
   namespace: membership
 type: Opaque
-stringData:
-  MARIADB_DATABASE: membership
-  MARIADB_USER: membership_user
-  MARIADB_PASSWORD: membership_password
-  MARIADB_ROOT_PASSWORD: root_password
 
 ---
 apiVersion: v1

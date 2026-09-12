@@ -5,10 +5,10 @@ services:
     container_name: membership-mariadb
 
     environment:
-      MARIADB_DATABASE: membership
-      MARIADB_USER: membership_user
-      MARIADB_PASSWORD: membership_password
-      MARIADB_ROOT_PASSWORD: root_password
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
 
     ports:
       - "3306:3306"
