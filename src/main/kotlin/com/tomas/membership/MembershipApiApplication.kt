@@ -1,3 +1,5 @@
+package com.tomas.membership
+
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 

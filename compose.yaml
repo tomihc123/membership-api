@@ -1,0 +1,47 @@
+services:
+
+  mariadb:
+    image: mariadb:lts
+    container_name: membership-mariadb
+
+    environment:
+      MARIADB_DATABASE: membership
+      MARIADB_USER: membership_user
+      MARIADB_PASSWORD: membership_password
+      MARIADB_ROOT_PASSWORD: root_password
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: membership-api
+
+    environment:
+      DB_URL: jdbc:mariadb://mariadb:3306/membership
+      DB_USER: membership_user
+      DB_PASSWORD: membership_password
+
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      mariadb:
+        condition: service_healthy
+
+
+volumes:
+  mariadb_data:

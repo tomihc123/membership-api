@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mariadb://localhost:3306/membership}
+    username: ${DB_USER:membership_user}
+    password: ${DB_PASSWORD:membership_password}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+
+  flyway:
+    enabled: true
+
+server:
+  port: 8080
