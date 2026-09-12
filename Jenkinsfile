@@ -62,7 +62,7 @@ pipeline {
                 ]) {
 
                     sh '''
-                        helm upgrade ${RELEASE_NAME} ${CHART_PATH} \
+                        helm upgrade --install ${RELEASE_NAME} ${CHART_PATH} \
                           --namespace ${NAMESPACE} \
                           --set image.repository=${IMAGE_NAME} \
                           --set image.tag=${IMAGE_TAG} \
